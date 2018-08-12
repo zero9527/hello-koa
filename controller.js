@@ -11,7 +11,7 @@ function addMapping(router, mapping) {
 			router.post(path, mapping[url]);
 		} else {
 			console.log(`invalid URL: ${url}`);
-		}
+		} 
 	}
 }
 // 添加控制器

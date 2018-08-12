@@ -10,7 +10,7 @@ const fs = require('fs');
 const serve = require('koa-static');	// 静态资源处理
 const main = serve(path.join(__dirname));
 app.use(main);
-
+ 
 // 注册 koa-bodyParser
 // 需要放在 router 之前
 app.use(bodyParser());

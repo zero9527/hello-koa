@@ -10,7 +10,7 @@ var config = {
     password: '',
     database: 'test',
     connectionLimit: 20
-}
+} 
 // 连接池
 const pool = mysql.createPool(config);
 

@@ -5,4 +5,4 @@ fn_hello = async(ctx, next) => {
 
 module.exports = {
     'GET /hello/:name': fn_hello
-};
+}; 
