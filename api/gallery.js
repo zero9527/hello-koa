@@ -1,8 +1,6 @@
 /**
  * 相册
  */
-// 路由处理
-const router = require('koa-router')();
 const fs = require('fs');
 const path = require('path');
 const root_dir = path.resolve(__dirname, '..');
