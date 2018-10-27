@@ -9,6 +9,7 @@
   "author": "zero chan",
   "license": "ISC",
   "dependencies": {
+    "axios": "^0.18.0",
     "koa": "^2.5.2",
     "koa-body": "^4.0.4",
     "koa-bodyparser": "^4.2.1",
@@ -18,7 +19,7 @@
     "mysql": "^2.16.0"
   },
   "devDependencies": {},
-  "keywords": [ 
+  "keywords": [
     "koa",
     "async"
   ]

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>gallery</title>
+  <style>
+    .list>img {
+      height: 200px;
+      width: auto;
+    }
+
+    .list>video {
+      height: 300px;
+      width: auto;
+    }
+  </style>
+</head>
+
+<body>
+  <div>
+    <h1>gallery</h1>
+    <p class='list'>
+      <!-- <img src=''> -->
+    </p>
+  </div>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script>
+    var list = document.querySelector('.list');
+    var getGallery = function () {
+      axios.get('/getGallery')
+        .then(res => {
+          res = res.data;
+          if (res.code == 1) {
+            res.data.forEach(item => {
+              if (item.extname.indexOf('mp4') == -1) {
+                list.innerHTML += `<img src='${item.path}'>`;
+              } else {
+                list.innerHTML += `<video src='${item.path}' controls></video>`;
+              }
+            })
+          }
+          console.log('res: ', res);
+        })
+        .catch(err => {
+          debugger
+        })
+    }
+    getGallery();
+  </script>
+</body>
+
+</html>

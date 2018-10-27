@@ -10,11 +10,22 @@
     <div>
         <h1>文件上传</h1>
     </div> 
-    <form class='form' action="http://localhost:3000/upload" method='post' 
+    <form class='form' action="javascript:;" method='post' 
     enctype='multipart/form-data'>
         <input class='file' type="file" name='file'>
         <input type="text" name='aa'>
-        <input type="submit" name='ok'>
+        <button class='submit'>submit</button>
     </form>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script>
+      var submit = document.querySelector('.submit');
+      var form = document.querySelector('.form');
+      submit.onclick = () => {
+        var formData = new FormData(form);
+        axios.post('/upload', formData)
+        .then(res => {})
+        .catch(err => {})
+      }
+    </script>
 </body>
 </html>
