@@ -5,7 +5,7 @@ const getDirFile = require('../common/getDirFile');
 
 var getGallery = async (ctx, next) => {
 	ctx.response.type = 'json';
-	getDirFile('/upload').then(res => {
+	getDirFile('/views/upload').then(res => {
 		console.log('res: ', res);
 		// 组装返回的数据
 		let obj = {
@@ -15,9 +15,9 @@ var getGallery = async (ctx, next) => {
 		}
 		ctx.body = JSON.stringify(obj);
 	})
-		.catch(err => {
-			console.log('err: ', err);
-		})
+  .catch(err => {
+    console.log('err: ', err);
+  })
 	// 调用下一个中间件
 	await next();
 }

@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>ajax获取列表</title>
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 </head>
 <body>
     <div>
@@ -14,7 +13,17 @@
     <ul class='item'>
         <li></li>
     </ul>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script>
+      // fetch('getList?id='+ 1, {
+      //   method: 'get'
+      // }).then(res => {
+      //   res.json();
+      // }).then(res => {
+      //   debugger
+      // }).catch(err => {
+      //   debugger
+      // })
         axios({
             method: 'get',
             timeout: 2000,

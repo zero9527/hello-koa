@@ -35,12 +35,6 @@ const fn_signin = async (ctx, next) => {
 /**
  * mysql 练习
  */
-const fn_list = async (ctx, next) => {
-  // 获取上级目录
-  var htmlfolder = path.resolve(__dirname, '../html');
-  ctx.response.type = 'html';
-  ctx.response.body = fs.createReadStream(htmlfolder + '/list.html');
-}
 // 数据库查询函数
 const { sql_search } = require('./sql-search')
 
@@ -74,16 +68,13 @@ const getList = async (ctx, next) => {
  * 404
  */
 const fn_404 = async (ctx, next) => {
-  // 获取上级目录
-  var htmlfolder = path.resolve(__dirname, '../html');
-  ctx.response.type = 'html';
-  ctx.response.body = fs.createReadStream(htmlfolder + '/404.html');
+  await ctx.render('404');
+  next();
 }
 
 module.exports = {
   'GET /404': fn_404,
-  'GET /': fn_index,
+  'GET /index': fn_index,
   'POST /signin': fn_signin,
-  'GET /list': fn_list,
   'GET /getList': getList,
 };

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>练习</title>
+</head>
+<body>
+  <script>
+    // 数组全排列练习
+    var arr = [1,2,3,4];
+    let temparr = [];
+    var arrAllSort = (arr) => {
+      if (arr.length === 2) return [[arr[0],arr[1]], [arr[1], arr[0]]];
+      temparr.push([...arr]);
+      console.log('arr: ',arr);
+      let obj = {
+        left: arr.slice(0,arr.length-2),
+        right: arr.slice(arr.length-1, arr.length),
+        indexOne: arr[arr.length-2],
+        index: arr.length-2
+      }
+      debugger
+      rightSort(obj, arr);
+    }
+    arrAllSort(arr);
+    /**
+     * 向右替换算法
+     * left: 固定的部分，
+     * right: 被替换的部分
+     * indexOne: 当前主动替换的元素
+     * index: 当前主动替换的序号
+     * 
+     * 未完。。。
+    */
+    function rightSort(config, arr) {
+      let index = config.index;
+      let tempRight;
+      let tempOne;
+      debugger
+      do { 
+        ++index;
+        tempOne = config.indexOne;
+        tempRight = JSON.parse(JSON.stringify(config.right));
+        [tempRight[index-config.left.length-1], tempOne] = [tempOne, tempRight[index-config.left.length-1]];
+        
+        temparr.push(
+          config.left.length 
+          ? [...config.left, tempOne, ...tempRight]
+          : [tempOne, ...tempRight]
+        )
+      } while(index < arr.length-1);
+
+      while (arr.length--) {
+        temparr.push([])
+      }
+      if (config.index >= 1) {
+        rightSort({
+          left: arr.slice(0,config.index-1),
+          right: arr.slice(config.index, arr.length),
+          indexOne: arr[config.index-1],
+          index: config.index-1
+        }, arr)
+      } else {
+        console.log('temparr: ',temparr);
+      }
+    }
+  </script>
+</body>
+</html>

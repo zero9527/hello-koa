@@ -1,20 +1,20 @@
 /**
- * ejs模板引擎练习
+ * 主页
  */
 const path = require('path');
 const getDirFile = require('../common/getDirFile');
 
-const ejs_testfn = async(ctx, next) => {
+const home_fn = async(ctx, next) => {
   let list = [];
-  // 读取图片
-  await getDirFile('/upload')
+  // 读取文件
+  await getDirFile('/views')
   .then(res => {
     console.log('res: ',res);
     list = res;
   })
-  await ctx.render('ejs_test', {
-    msg: 'testetsttest',
-    list: list
+  await ctx.render('home', {
+    msg: 'nav',
+    navlink: list
   })
   await next();
 }
@@ -22,7 +22,7 @@ const ejs_testfn = async(ctx, next) => {
 module.exports = {
     method: 'get',
     list: [
-      '/ejs_test',   // url
-      ejs_testfn      // 处理函数
+      '/',   // url
+      home_fn // 处理函数
     ]
-}; 
+};
